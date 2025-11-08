@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavyashree B - Portfolio</title>
+  <meta name="description" content="Portfolio of Kavyashree B - Web development, ML, and automation projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="brand" href="#home">
+        <span class="logo-ring"><span class="logo-dot"></span></span>
+        <span class="brand-text">Kavyashree <span class="brand-accent">B</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="actions">
+        <a class="btn resume-pill" href="C:\Users\bkavy\Downloads\kavyashree-portfolio-light-pro-v10\kavyashree-portfolio-light-pro-v10\assets\Kavyashree_B_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <button id="menu" class="icon-pill" aria-label="Menu">≡</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- HERO v10: perfectly aligned 3-columns; smaller round buttons; no blinking underscore -->
+    <section class="hero-triple container">
+      <div class="col photo">
+        <img class="avatar tiny" src="C:\Users\bkavy\Downloads\kavyashree-portfolio-light-pro-v10\kavyashree-portfolio-light-pro-v10\assets\profile.png" alt="Kavyashree B portrait" />
+      </div>
+      <div class="col intro">
+        <h1 class="hello">Hello,</h1>
+        <h2>I am <span class="name">Kavyashree&nbsp;B</span>.</h2>
+        <p class="lead">A Computer Science Engineering undergraduate passionate about developing <strong>real-time applications</strong> and crafting <strong>clean, user-centric web     experiences</strong>. I focus on building <strong>practical and reliable solutions</strong>, having successfully completed multiple projects that transform innovative ideas into impactful, functional products. I enjoy contributing across the entire development lifecycle—from concept to deployment—ensuring <strong>performance, scalability,</strong> and a <strong>seamless user experience</strong>.</p>
+
+        <div class="round-cta center">
+          <a class="round resume" href="assets/Kavyashree_B_Resume.pdf" target="_blank" rel="noopener"><span>Resume</span></a>
+          <a class="round projects" href="#projects"><span>Projects</span></a>
+          <a class="round contact" href="#contact"><span>Contact</span></a>
+        </div>
+      </div>
+      <aside class="col quick">
+        <div class="quick-card">
+          <h3>Quick info</h3>
+          <p><strong>Location:</strong> Bengaluru, Karnataka</p>
+          <p><strong>Email:</strong> <a href="mailto:bkavyashree2004@gmail.com">bkavyashree2004@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+918310142092">+91 8310142092</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/Kavyashree1212" target="_blank">github.com/Kavyashree1212</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank">/in/kavyashree-b-0b58ab319</a></p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container section">
+      <div class="section-head">
+        <h2 class="title">Projects</h2>
+        <div class="filters">
+          <button class="chip filter active" data-filter="all">All</button>
+          <button class="chip filter" data-filter="ml">ML/AI</button>
+          <button class="chip filter" data-filter="web">Web</button>
+          <button class="chip filter" data-filter="automation">Automation</button>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <article class="project" data-tags="ml">
+          <img class="thumb" src="assets/lpr.svg" alt="License Plate project thumbnail"/>
+          <div class="meta">
+            <h3>License Plate Detection & Recognition</h3>
+            <p class="kicker">YOLOv8s • Tesseract OCR • Real‑time</p>
+            <p>Real‑time LPR with ~94% recognition accuracy, robust to low light, speed, and partial occlusion.</p>
+            <details class="more">
+              <summary>Read more</summary>
+              <ul>
+                <li><strong>Detection:</strong> YOLOv8s (Ultralytics) for fast, accurate plate localization.</li>
+                <li><strong>Pre‑processing:</strong> OpenCV (Gaussian blur, grayscale, thresholding, dilation) to denoise & sharpen characters.</li>
+                <li><strong>OCR:</strong> Tesseract with tuned PSM/Whitelist for plate text.</li>
+                <li><strong>Edge cases:</strong> Handles damaged/dirty plates & fast‑moving vehicles.</li>
+                <li><strong>Use cases:</strong> Traffic monitoring, parking management, campus gates.</li>
+              </ul>
+            </details>
+            <div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Tesseract</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="web">
+          <img class="thumb" src="assets/chitlink.svg" alt="ChitLink messenger thumbnail"/>
+          <div class="meta">
+            <h3>ChitLink Messenger</h3>
+            <p class="kicker">Secure real‑time chat • Social verification</p>
+            <p>Messaging platform with real‑time rooms and verification badges to enhance authenticity and trust.</p>
+            <details class="more">
+              <summary>Read more</summary>
+              <ul>
+                <li><strong>Frontend:</strong> Flutter (clean UI, responsive, message threads).</li>
+                <li><strong>Backend:</strong> Spring Boot APIs with WebSocket for real‑time events.</li>
+                <li><strong>Security:</strong> E2E encryption for DMs, JWT auth, rate limiting.</li>
+                <li><strong>Verification:</strong> Badge system tied to phone/email/social proofs.</li>
+              </ul>
+            </details>
+            <div class="tags"><span>Flutter</span><span>Spring Boot</span><span>WebSocket</span><span>MongoDB</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="automation">
+          <img class="thumb" src="assets/servicenow.svg" alt="ServiceNow automation thumbnail"/>
+          <div class="meta">
+            <h3>Smart College Management & Automation (ServiceNow)</h3>
+            <p class="kicker">Centralized workflows • Digital campus ops</p>
+            <p>Automated admissions, faculty, hostel, transport,leave letter approval and mess operations using Service Catalogs and custom workflows.</p>
+            <details class="more">
+              <summary>Read more</summary>
+              <ul>
+                <li><strong>Platform:</strong> ServiceNow - custom tables, forms, ACLs, and UI policies.</li>
+                <li><strong>Service Catalogs:</strong> Requests for transport passes, hostel services, and mess plans.</li>
+                <li><strong>Automation:</strong> Flow Designer & business rules for approvals, SLA, and notifications.</li>
+                <li><strong>Impact:</strong> Reduced manual paperwork, higher accuracy, and faster turnaround.</li>
+              </ul>
+            </details>
+            <div class="tags"><span>ServiceNow</span><span>Flow Designer</span><span>Automation</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container section">
+      <h2 class="title">Skills</h2>
+      <div class="pill-grid">
+        <span class="pill">Java</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
+        <span class="pill">MySQL</span><span class="pill">MongoDB</span><span class="pill">Git</span><span class="pill">VS Code</span>
+        <span class="pill soft">Team Collaboration</span><span class="pill soft">Communication</span><span class="pill soft">Time Management</span><span class="pill soft">Adaptability</span>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="container section">
+      <h2 class="title">Education</h2>
+      <ol class="timeline">
+        <li class="item"><div class="dot"></div><div><h3>Nagarjuna College of Engineering & Technology</h3><p>B.E. CSE - CGPA 8.63</p><span class="muted">Aug 2022 - Present • Bengaluru</span></div></li>
+        <li class="item"><div class="dot"></div><div><h3>Varasiddhi Vinayaka PU College</h3><p>PUC (PCMB) - 79.16%</p><span class="muted">2020 - 2022 • Udupi</span></div></li>
+        <li class="item"><div class="dot"></div><div><h3>Kittur Rani Chennamma Residential School</h3><p>High School - 89.6%</p><span class="muted">Completed 2020 • Davanagere</span></div></li>
+      </ol>
+    </section>
+
+    <!-- Certifications -->
+<section id="certs" class="container section">
+  <h2 class="title">Certifications</h2>
+  <ul class="badges badges-list">
+    <li>
+      NPTEL - Programming in Java (Elite Certificate)
+      <a class="cred" href="https://drive.google.com/file/d/19a0fVf3szTMUD_tv9zucTM8itphAvlol/view?usp=drive_link" target="_blank" rel="noopener">
+        View credential ↗
+      </a>
+    </li>
+    <li>
+      Micro-Certification - Welcome to ServiceNow
+      <a class="cred" href="https://drive.google.com/file/d/1GKHFaCSGLU_TTN56HclU_Tp1Sp1neFVf/view?usp=drive_link" target="_blank" rel="noopener">
+        View credential ↗
+      </a>
+    </li>
+    <li>
+      Certified System Administrator - ServiceNow
+      <a class="cred" href="https://drive.google.com/file/d/1A8l0iZrt7X1wKKSd0KZK8VtYnTCL9gXS/view?usp=drive_link" target="_blank" rel="noopener">
+        View credential ↗
+      </a>
+    </li>
+    <li>
+      Oracle Database Foundations
+      <a class="cred" href="https://drive.google.com/file/d/1ZDo0xnuAQlurAzNHc6m7rxMtX8c-qlz5/view?usp=drive_link" target="_blank" rel="noopener">
+        View credential ↗
+      </a>
+    </li>
+    <li>
+      Full Stack Developer Bootcamp - Master Frontend to Backend
+      <a class="cred" href="https://drive.google.com/file/d/15GDm2VUtOD99TPeaAMpbL6vO-dYYWGSm/view?usp=drive_link" target="_blank" rel="noopener">
+        View credential ↗
+      </a>
+    </li>
+  </ul>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="container section">
+      <h2 class="title">Contact</h2>
+      <div class="contact">
+        <a class="btn primary" href="mailto:bkavyashree2004@gmail.com">Email</a>
+        <a class="btn" href="https://github.com/Kavyashree1212" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container foot">
+      <p>© <span id="year"></span> Kavyashree B</p>
+      <a href="#home" class="top">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
