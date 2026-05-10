@@ -1,222 +1,772 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kavyashree B - Portfolio</title>
-  <meta name="description" content="Portfolio of Kavyashree B - Web development, ML, and automation projects." />
+  <title>Kavyashree B — Frontend Developer</title>
+  <meta name="description" content="Frontend Developer portfolio of Kavyashree B — internship, web projects, and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off: #f7f7f5;
+      --ink: #111110;
+      --ink2: #3a3a38;
+      --muted: #888884;
+      --rule: #e4e4e0;
+      --green: #1d6a4e;
+      --green-bg: #f0f7f4;
+      --green-border: #c8dfd8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+    /* HEADER */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .header-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 40px;
+      height: 62px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em; color: var(--ink);
+    }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a {
+      font-size: 0.79rem; font-weight: 500; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--muted); transition: color 0.2s;
+    }
+    .nav a:hover { color: var(--ink); }
+    .nav .btn-resume {
+      color: var(--white); background: var(--ink);
+      padding: 8px 18px; border-radius: 4px;
+      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; transition: background 0.2s;
+    }
+    .nav .btn-resume:hover { background: var(--ink2); color: var(--white); }
+    .menu-btn {
+      display: none; background: none; border: 1px solid var(--rule);
+      color: var(--ink); width: 38px; height: 38px;
+      border-radius: 4px; cursor: pointer; font-size: 18px;
+      align-items: center; justify-content: center;
+    }
+
+    /* HERO */
+    .hero { padding: 96px 0 80px; border-bottom: 1px solid var(--rule); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 320px; gap: 80px; align-items: center; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .eyebrow-line { width: 28px; height: 1px; background: var(--muted); }
+    .eyebrow-text {
+      font-size: 0.73rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 22px;
+    }
+    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-bio { font-size: 0.97rem; color: var(--ink2); line-height: 1.82; max-width: 500px; margin-bottom: 34px; }
+    .hero-bio strong { color: var(--ink); font-weight: 600; }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--white);
+      font-size: 0.79rem; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 12px 24px; border-radius: 4px; transition: background 0.2s;
+    }
+    .btn-dark:hover { background: var(--ink2); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--ink);
+      font-size: 0.79rem; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 11px 24px;
+      border-radius: 4px; border: 1px solid var(--rule); transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--ink2); }
+
+    .hero-right { display: flex; flex-direction: column; gap: 20px; }
+    .avatar-wrap { position: relative; width: 180px; margin: 0 auto; }
+    .avatar-wrap img {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--rule);
+    }
+    .available-dot {
+      position: absolute; bottom: 10px; right: 6px;
+      background: #22c55e; width: 15px; height: 15px;
+      border-radius: 50%; border: 3px solid var(--white);
+    }
+    .info-card {
+      background: var(--off); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 20px;
+    }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 7px 0; border-bottom: 1px solid var(--rule); gap: 10px;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row:first-child { padding-top: 0; }
+    .info-key {
+      font-size: 0.69rem; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    }
+    .info-val { font-size: 0.82rem; font-weight: 500; color: var(--ink); text-align: right; }
+    .info-val a { color: var(--green); }
+    .info-val a:hover { text-decoration: underline; }
+
+    /* SECTIONS */
+    .section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    .section-header { display: grid; grid-template-columns: 180px 1fr; gap: 60px; margin-bottom: 48px; }
+    .section-num {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--muted); padding-top: 5px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.15;
+    }
+    .section-body { display: grid; grid-template-columns: 180px 1fr; gap: 60px; }
+    .aside-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); line-height: 1.7; padding-top: 4px;
+    }
+
+    /* INTERNSHIP */
+    .intern-card {
+      background: var(--green-bg); border: 1px solid var(--green-border); border-radius: 6px; padding: 36px 38px;
+    }
+    .intern-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 24px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--green-border);
+    }
+    .intern-role {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .intern-sub { font-size: 0.84rem; color: var(--ink2); }
+    .intern-period { text-align: right; flex-shrink: 0; }
+    .period-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px;
+    }
+    .period-val { font-size: 0.88rem; font-weight: 600; color: var(--green); }
+    .intern-desc { font-size: 0.9rem; color: var(--ink2); line-height: 1.82; margin-bottom: 26px; }
+    .intern-points { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 26px; }
+    .ipoint {
+      background: var(--white); border: 1px solid var(--green-border);
+      border-radius: 5px; padding: 16px 18px;
+    }
+    .ipoint-title { font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+    .ipoint-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.6; }
+    .tech-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tech-tag {
+      background: var(--white); border: 1px solid var(--green-border);
+      color: var(--green); font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.04em; padding: 4px 11px; border-radius: 3px;
+    }
+
+    /* PROJECTS */
+    .filter-bar { display: flex; gap: 7px; margin-bottom: 0; }
+    .chip {
+      background: transparent; border: 1px solid var(--rule); color: var(--muted);
+      font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 3px; cursor: pointer; transition: all 0.15s;
+    }
+    .chip.active, .chip:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .projects-list { margin-top: 20px; }
+    .project-row {
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: start; gap: 24px;
+      padding: 26px 0; border-top: 1px solid var(--rule);
+      cursor: pointer;
+    }
+    .project-row:last-child { border-bottom: 1px solid var(--rule); }
+    .project-row:hover .proj-name { color: var(--green); }
+    .proj-type {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 7px;
+    }
+    .proj-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em;
+      margin-bottom: 8px; transition: color 0.2s;
+    }
+    .proj-desc { font-size: 0.86rem; color: var(--ink2); line-height: 1.72; max-width: 560px; }
+    .proj-expand { display: none; padding: 14px 0 4px; }
+    .proj-expand.open { display: block; }
+    .proj-expand ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 24px; }
+    .proj-expand li {
+      font-size: 0.81rem; color: var(--ink2); padding-left: 14px;
+      position: relative; line-height: 1.55;
+    }
+    .proj-expand li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .ptag {
+      background: var(--off); border: 1px solid var(--rule);
+      font-size: 0.71rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--ink2); padding: 4px 9px; border-radius: 3px;
+    }
+    .proj-toggle {
+      font-size: 0.75rem; font-weight: 600; color: var(--muted);
+      white-space: nowrap; padding-top: 3px; user-select: none; transition: color 0.2s;
+    }
+    .project-row:hover .proj-toggle { color: var(--green); }
+
+    /* SKILLS */
+    .skills-block { display: flex; flex-direction: column; gap: 26px; }
+    .skill-group-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 11px;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .spill {
+      background: var(--off); border: 1px solid var(--rule);
+      font-size: 0.82rem; font-weight: 500; color: var(--ink);
+      padding: 8px 15px; border-radius: 4px; transition: border-color 0.15s;
+    }
+    .spill:hover { border-color: var(--ink2); }
+
+    /* EDUCATION */
+    .edu-item {
+      display: grid; grid-template-columns: 150px 1fr;
+      gap: 32px; padding: 22px 0; border-top: 1px solid var(--rule);
+    }
+    .edu-item:last-child { border-bottom: 1px solid var(--rule); }
+    .edu-period { font-size: 0.77rem; font-weight: 500; color: var(--muted); padding-top: 2px; }
+    .edu-name { font-weight: 600; font-size: 0.93rem; color: var(--ink); margin-bottom: 3px; }
+    .edu-detail { font-size: 0.82rem; color: var(--ink2); margin-bottom: 7px; }
+    .edu-score {
+      display: inline-block; background: var(--green-bg);
+      border: 1px solid var(--green-border); color: var(--green);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+      padding: 3px 9px; border-radius: 3px;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-item {
+      display: grid; grid-template-columns: 90px 1fr auto;
+      gap: 24px; align-items: center;
+      padding: 16px 0; border-top: 1px solid var(--rule);
+    }
+    .cert-item:last-child { border-bottom: 1px solid var(--rule); }
+    .cert-org {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .cert-name { font-size: 0.87rem; font-weight: 500; color: var(--ink); line-height: 1.45; }
+    .cert-link {
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--green); white-space: nowrap; transition: opacity 0.15s;
+    }
+    .cert-link:hover { opacity: 0.7; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-message { font-size: 0.97rem; color: var(--ink2); line-height: 1.82; margin-bottom: 26px; }
+    .contact-message strong { color: var(--ink); font-weight: 600; }
+    .clink {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: 18px; align-items: center;
+      padding: 13px 0; border-top: 1px solid var(--rule); transition: color 0.15s;
+    }
+    .clink:last-child { border-bottom: 1px solid var(--rule); }
+    .clink:hover .clink-val { color: var(--green); }
+    .clink-key {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .clink-val { font-size: 0.84rem; font-weight: 500; color: var(--ink); transition: color 0.15s; }
+
+    /* FOOTER */
+    .site-footer {
+      max-width: 1080px; margin: 0 auto; padding: 26px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .foot-copy { font-size: 0.76rem; color: var(--muted); }
+    .foot-top {
+      font-size: 0.73rem; font-weight: 600; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--muted);
+      border: 1px solid var(--rule); padding: 7px 13px; border-radius: 4px; transition: all 0.15s;
+    }
+    .foot-top:hover { border-color: var(--ink2); color: var(--ink); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade { animation: fadeUp 0.5s ease both; }
+    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; }
+    .d3 { animation-delay: 0.25s; } .d4 { animation-delay: 0.35s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .wrap, .header-inner, .site-footer { padding-left: 24px; padding-right: 24px; }
+      .hero { padding: 80px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero-right { order: -1; }
+      .section-header, .section-body { grid-template-columns: 1fr; gap: 14px; }
+      .section-header { margin-bottom: 28px; }
+      .intern-points { grid-template-columns: 1fr; }
+      .proj-expand ul { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cert-item { grid-template-columns: 80px 1fr; gap: 14px; }
+      .cert-link { grid-column: 2; }
+      .edu-item { grid-template-columns: 1fr; gap: 6px; }
+      .nav { display: none; }
+      .nav.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 62px; left: 0; right: 0;
+        background: var(--white); padding: 20px 24px;
+        border-bottom: 1px solid var(--rule); gap: 18px; z-index: 49;
+      }
+      .menu-btn { display: flex; }
+    }
+    @media (max-width: 520px) {
+      .intern-head { flex-direction: column; }
+      .hero-title { font-size: 2.1rem; }
+    }
+  </style>
 </head>
 <body>
+
   <header class="site-header">
-    <div class="container header-wrap">
-      <a class="brand" href="#home">
-        <span class="logo-ring"><span class="logo-dot"></span></span>
-        <span class="brand-text">Kavyashree <span class="brand-accent">B</span></span>
-      </a>
+    <div class="header-inner">
+      <a class="brand" href="#home">Kavyashree B</a>
       <nav class="nav" id="nav">
+        <a href="#internship">Internship</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
         <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
+        <a class="btn-resume" href="assets/KAVYASHREE B-RESUME.pdf" target="_blank" rel="noopener">Resume ↗</a>
       </nav>
-      <div class="actions">
-        <a class="btn resume-pill" href="assets/KAVYASHREE B-RESUME.pdf" target="_blank" rel="noopener">Resume</a>
-        <button id="menu" class="icon-pill" aria-label="Menu">≡</button>
-      </div>
+      <button class="menu-btn" id="menu">≡</button>
     </div>
   </header>
 
   <main id="home">
-    <!-- HERO v10: perfectly aligned 3-columns; smaller round buttons; no blinking underscore -->
-    <section class="hero-triple container">
-      <div class="col photo">
-        <img class="avatar tiny" src="assets/PHOTO.jpg" alt="Kavyashree B portrait" />
-      </div>
-      <div class="col intro">
-        <h1 class="hello">Hello,</h1>
-        <h2>I am <span class="name">Kavyashree&nbsp;B</span>.</h2>
-       <p class="lead">A Computer Science Engineering undergraduate passionate about developing <strong>real-time applications</strong> and crafting <strong>clean, user-centric web experiences</strong>. I focus on building <strong>practical and reliable solutions</strong>, having successfully completed multiple projects that transform innovative ideas into impactful, functional products. I enjoy contributing across the entire development lifecycle from concept to deployment ensuring <strong>performance, scalability,</strong> and a <strong>seamless user experience</strong>.</p>
 
-        <div class="round-cta center">
-          <a class="round resume" href="assets/KAVYASHREE B-RESUME.pdf" target="_blank" rel="noopener"><span>Resume</span></a>
-          <a class="round projects" href="#projects"><span>Projects</span></a>
-          <a class="round contact" href="#contact"><span>Contact</span></a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-eyebrow fade d1">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">Frontend Developer &amp; CS Undergraduate</span>
+            </div>
+            <h1 class="hero-title fade d2">
+              Crafting <em>clean,</em><br>
+              purposeful web<br>
+              experiences.
+            </h1>
+            <p class="hero-bio fade d3">
+              I'm <strong>Kavyashree B</strong>, a Computer Science Engineering student at NCET, Bengaluru.
+              I recently completed a <strong>Frontend Web Development internship</strong> building production
+              interfaces with HTML, CSS, JavaScript, PHP, Python, and React.js — and have shipped projects
+              across web, ML, and enterprise automation.
+            </p>
+            <div class="hero-actions fade d4">
+              <a class="btn-dark" href="#internship">View Internship</a>
+              <a class="btn-outline" href="#projects">Projects</a>
+              <a class="btn-outline" href="assets/KAVYASHREE B-RESUME.pdf" target="_blank" rel="noopener">Resume ↗</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="avatar-wrap">
+              <img src="assets/PHOTO.jpg" alt="Kavyashree B" />
+              <span class="available-dot" title="Open to opportunities"></span>
+            </div>
+            <div class="info-card">
+              <div class="info-row">
+                <span class="info-key">Location</span>
+                <span class="info-val">Bengaluru, KA</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">CGPA</span>
+                <span class="info-val">8.70 / 10</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">GitHub</span>
+                <span class="info-val"><a href="https://github.com/Kavyashree1212" target="_blank">Kavyashree1212</a></span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">LinkedIn</span>
+                <span class="info-val"><a href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank">Profile ↗</a></span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">Email</span>
+                <span class="info-val"><a href="mailto:bkavyashree2004@gmail.com">Write to me</a></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <aside class="col quick">
-        <div class="quick-card">
-          <h3>Quick info</h3>
-          <p><strong>Location:</strong> Bengaluru, Karnataka</p>
-          <p><strong>Email:</strong> <a href="mailto:bkavyashree2004@gmail.com">bkavyashree2004@gmail.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+918310142092">+91 8310142092</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/Kavyashree1212" target="_blank">github.com/Kavyashree1212</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank">/in/kavyashree-b-0b58ab319</a></p>
+    </section>
+
+    <!-- INTERNSHIP -->
+    <section id="internship" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">01 — Experience</p>
+          <h2 class="section-title">Internship</h2>
         </div>
-      </aside>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="container section">
-      <div class="section-head">
-        <h2 class="title">Projects</h2>
-        <div class="filters">
-          <button class="chip filter active" data-filter="all">All</button>
-          <button class="chip filter" data-filter="ml">ML/AI</button>
-          <button class="chip filter" data-filter="web">Web</button>
-          <button class="chip filter" data-filter="automation">Automation</button>
+        <div class="section-body">
+          <p class="aside-label">Frontend Web<br>Development<br><br>Full internship<br>programme</p>
+          <div>
+            <div class="intern-card">
+              <div class="intern-head">
+                <div>
+                  <p class="intern-role">Frontend Web Development Intern</p>
+                  <p class="intern-sub">Building and shipping responsive, user-facing web interfaces</p>
+                </div>
+                <div class="intern-period">
+                  <span class="period-label">Duration</span>
+                  <span class="period-val">2024 — 2025</span>
+                </div>
+              </div>
+              <p class="intern-desc">
+                I worked within a development team to design and build responsive frontend interfaces for
+                real-world applications. I contributed across the full frontend lifecycle — translating
+                design specifications into clean HTML/CSS layouts, writing interactive JavaScript and
+                React.js components, integrating with PHP and Python backends, and maintaining
+                version-controlled codebases through collaborative Git workflows.
+              </p>
+              <div class="intern-points">
+                <div class="ipoint">
+                  <p class="ipoint-title">UI &amp; Layout</p>
+                  <p class="ipoint-desc">Pixel-perfect responsive pages in HTML5 &amp; CSS3 from design specs</p>
+                </div>
+                <div class="ipoint">
+                  <p class="ipoint-title">Interactivity</p>
+                  <p class="ipoint-desc">Dynamic features with JavaScript and React.js component architecture</p>
+                </div>
+                <div class="ipoint">
+                  <p class="ipoint-title">Backend Integration</p>
+                  <p class="ipoint-desc">Connected frontend to PHP &amp; Python APIs; handled forms and data flows</p>
+                </div>
+              </div>
+              <div class="tech-row">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Responsive Design</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="gallery">
-        <article class="project" data-tags="ml">
-          <img class="thumb" src="assets/lpr.svg" alt="License Plate project thumbnail"/>
-          <div class="meta">
-            <h3>License Plate Detection & Recognition</h3>
-            <p class="kicker">YOLOv8s • Tesseract OCR • Real‑time</p>
-            <p>Real‑time LPR with ~94% recognition accuracy, robust to low light, speed, and partial occlusion.</p>
-            <details class="more">
-              <summary>Read more</summary>
-              <ul>
-                <li><strong>Detection:</strong> YOLOv8s (Ultralytics) for fast, accurate plate localization.</li>
-                <li><strong>Pre‑processing:</strong> OpenCV (Gaussian blur, grayscale, thresholding, dilation) to denoise & sharpen characters.</li>
-                <li><strong>OCR:</strong> Tesseract with tuned PSM/Whitelist for plate text.</li>
-                <li><strong>Edge cases:</strong> Handles damaged/dirty plates & fast‑moving vehicles.</li>
-                <li><strong>Use cases:</strong> Traffic monitoring, parking management, campus gates.</li>
-              </ul>
-            </details>
-            <div class="tags"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Tesseract</span></div>
-          </div>
-        </article>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">02 — Work</p>
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="section-body">
+          <p class="aside-label">Selected work across web, ML, and automation</p>
+          <div>
+            <div class="filter-bar">
+              <button class="chip active" data-filter="all">All</button>
+              <button class="chip" data-filter="ml">ML / AI</button>
+              <button class="chip" data-filter="web">Web</button>
+              <button class="chip" data-filter="automation">Automation</button>
+            </div>
+            <div class="projects-list">
+              <div class="project-row" data-tags="ml" onclick="toggleProject(this)">
+                <div>
+                  <p class="proj-type">ML / AI</p>
+                  <p class="proj-name">License Plate Detection &amp; Recognition</p>
+                  <p class="proj-desc">Real-time LPR system achieving ~94% recognition accuracy, robust to low light, vehicle speed, and partial occlusion.</p>
+                  <div class="proj-expand">
+                    <ul>
+                      <li>YOLOv8s (Ultralytics) for fast, accurate plate localization</li>
+                      <li>OpenCV pipeline — Gaussian blur, grayscale, thresholding, dilation</li>
+                      <li>Tesseract OCR with tuned PSM &amp; whitelist for plate text</li>
+                      <li>Handles damaged plates, dirty plates &amp; fast-moving vehicles</li>
+                      <li>Use cases: traffic monitoring, parking, campus access control</li>
+                    </ul>
+                  </div>
+                  <div class="proj-tags">
+                    <span class="ptag">Python</span><span class="ptag">YOLOv8</span><span class="ptag">OpenCV</span><span class="ptag">Tesseract</span>
+                  </div>
+                </div>
+                <span class="proj-toggle">+ Details</span>
+              </div>
 
-        <article class="project" data-tags="web">
-          <img class="thumb" src="assets/chitlink.svg" alt="ChitLink messenger thumbnail"/>
-          <div class="meta">
-            <h3>ChitLink Messenger</h3>
-            <p class="kicker">Secure real‑time chat • Social verification</p>
-            <p>Messaging platform with real‑time rooms and verification badges to enhance authenticity and trust.</p>
-            <details class="more">
-              <summary>Read more</summary>
-              <ul>
-                <li><strong>Frontend:</strong> Flutter (clean UI, responsive, message threads).</li>
-                <li><strong>Backend:</strong> Spring Boot APIs with WebSocket for real‑time events.</li>
-                <li><strong>Security:</strong> E2E encryption for DMs, JWT auth, rate limiting.</li>
-                <li><strong>Verification:</strong> Badge system tied to phone/email/social proofs.</li>
-              </ul>
-            </details>
-            <div class="tags"><span>Flutter</span><span>Spring Boot</span><span>WebSocket</span><span>MongoDB</span></div>
-          </div>
-        </article>
+              <div class="project-row" data-tags="web" onclick="toggleProject(this)">
+                <div>
+                  <p class="proj-type">Web App</p>
+                  <p class="proj-name">ChitLink Messenger</p>
+                  <p class="proj-desc">Secure real-time messaging platform with end-to-end encrypted DMs and verification badges to build user trust.</p>
+                  <div class="proj-expand">
+                    <ul>
+                      <li>Flutter frontend — clean UI, responsive, threaded messages</li>
+                      <li>Spring Boot backend with WebSocket for real-time events</li>
+                      <li>E2E encryption for DMs, JWT auth, and rate limiting</li>
+                      <li>Badge system tied to phone, email, and social verification</li>
+                    </ul>
+                  </div>
+                  <div class="proj-tags">
+                    <span class="ptag">Flutter</span><span class="ptag">Spring Boot</span><span class="ptag">WebSocket</span><span class="ptag">MongoDB</span>
+                  </div>
+                </div>
+                <span class="proj-toggle">+ Details</span>
+              </div>
 
-        <article class="project" data-tags="automation">
-          <img class="thumb" src="assets/servicenow.svg" alt="ServiceNow automation thumbnail"/>
-          <div class="meta">
-            <h3>Smart College Management & Automation (ServiceNow)</h3>
-            <p class="kicker">Centralized workflows • Digital campus ops</p>
-            <p>Automated admissions, faculty, hostel, transport,leave letter approval and mess operations using Service Catalogs and custom workflows.</p>
-            <details class="more">
-              <summary>Read more</summary>
-              <ul>
-                <li><strong>Platform:</strong> ServiceNow - custom tables, forms, ACLs, and UI policies.</li>
-                <li><strong>Service Catalogs:</strong> Requests for transport passes, hostel services, and mess plans.</li>
-                <li><strong>Automation:</strong> Flow Designer & business rules for approvals, SLA, and notifications.</li>
-                <li><strong>Impact:</strong> Reduced manual paperwork, higher accuracy, and faster turnaround.</li>
-              </ul>
-            </details>
-            <div class="tags"><span>ServiceNow</span><span>Flow Designer</span><span>Automation</span></div>
+              <div class="project-row" data-tags="automation" onclick="toggleProject(this)">
+                <div>
+                  <p class="proj-type">Automation</p>
+                  <p class="proj-name">Smart College Management &amp; Automation</p>
+                  <p class="proj-desc">Automated admissions, faculty, hostel, transport, leave approvals, and mess operations via ServiceNow Service Catalogs and custom workflows.</p>
+                  <div class="proj-expand">
+                    <ul>
+                      <li>ServiceNow — custom tables, forms, ACLs, and UI policies</li>
+                      <li>Service Catalogs for transport passes, hostel &amp; mess services</li>
+                      <li>Flow Designer &amp; business rules for approvals, SLA, notifications</li>
+                      <li>Reduced manual paperwork, higher accuracy, faster turnaround</li>
+                    </ul>
+                  </div>
+                  <div class="proj-tags">
+                    <span class="ptag">ServiceNow</span><span class="ptag">Flow Designer</span><span class="ptag">Automation</span>
+                  </div>
+                </div>
+                <span class="proj-toggle">+ Details</span>
+              </div>
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="container section">
-      <h2 class="title">Skills</h2>
-      <div class="pill-grid">
-        <span class="pill">Java</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
-        <span class="pill">MySQL</span><span class="pill">MongoDB</span><span class="pill">Git</span><span class="pill">VS Code</span>
-        <span class="pill soft">Team Collaboration</span><span class="pill soft">Communication</span><span class="pill soft">Time Management</span><span class="pill soft">Adaptability</span>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">03 — Expertise</p>
+          <h2 class="section-title">Skills</h2>
+        </div>
+        <div class="section-body">
+          <p class="aside-label">Technical &amp;<br>interpersonal</p>
+          <div class="skills-block">
+            <div>
+              <p class="skill-group-label">Languages &amp; Frameworks</p>
+              <div class="skill-pills">
+                <span class="spill">HTML5</span><span class="spill">CSS3</span>
+                <span class="spill">JavaScript</span><span class="spill">React.js</span>
+                <span class="spill">PHP</span><span class="spill">Python</span><span class="spill">Java</span>
+              </div>
+            </div>
+            <div>
+              <p class="skill-group-label">Databases &amp; Tools</p>
+              <div class="skill-pills">
+                <span class="spill">MySQL</span><span class="spill">MongoDB</span>
+                <span class="spill">Git</span><span class="spill">VS Code</span><span class="spill">ServiceNow</span>
+              </div>
+            </div>
+            <div>
+              <p class="skill-group-label">Soft Skills</p>
+              <div class="skill-pills">
+                <span class="spill">Team Collaboration</span><span class="spill">Communication</span>
+                <span class="spill">Time Management</span><span class="spill">Adaptability</span>
+                <span class="spill">Problem Solving</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section id="education" class="container section">
-      <h2 class="title">Education</h2>
-      <ol class="timeline">
-        <li class="item"><div class="dot"></div><div><h3>Nagarjuna College of Engineering & Technology</h3><p>B.E. CSE - CGPA 8.70</p><span class="muted">Aug 2022 - Present • Bengaluru</span></div></li>
-        <li class="item"><div class="dot"></div><div><h3>Varasiddhi Vinayaka PU College</h3><p>PUC (PCMB) - 79.16%</p><span class="muted">2020 - 2022 • Udupi</span></div></li>
-        <li class="item"><div class="dot"></div><div><h3>Kittur Rani Chennamma Residential School</h3><p>High School - 89.6%</p><span class="muted">Completed 2020 • Davanagere</span></div></li>
-      </ol>
-    </section>
-
-    <!-- Certifications -->
-<section id="certs" class="container section">
-  <h2 class="title">Certifications</h2>
-  <ul class="badges badges-list">
-    <li>
-      NPTEL - Programming in Java (Elite Certificate)
-      <a class="cred" href="https://drive.google.com/file/d/19a0fVf3szTMUD_tv9zucTM8itphAvlol/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-    <li>
-      Micro-Certification - Welcome to ServiceNow
-      <a class="cred" href="https://drive.google.com/file/d/1GKHFaCSGLU_TTN56HclU_Tp1Sp1neFVf/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-    <li>
-      SerivceNow Certified System Administrator(CSA)
-      <a class="cred" href="https://drive.google.com/file/d/1ZmxQahEpFGfn2bibB98TEKTVgLS_qoiu/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-    <li>
-      ServiceNow Certified Application Developer(CAD)
-      <a class="cred" href="https://drive.google.com/file/d/1RZAzA9CuMmn95pSaTsyuEVWLWyi6q_E9/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-    <li>
-      Oracle Database Foundations
-      <a class="cred" href="https://drive.google.com/file/d/1ZDo0xnuAQlurAzNHc6m7rxMtX8c-qlz5/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-    <li>
-      Full Stack Developer Bootcamp - Master Frontend to Backend
-      <a class="cred" href="https://drive.google.com/file/d/15GDm2VUtOD99TPeaAMpbL6vO-dYYWGSm/view?usp=drive_link" target="_blank" rel="noopener">
-        View credential ↗
-      </a>
-    </li>
-  </ul>
-</section>
-
-
-    <!-- Contact -->
-    <section id="contact" class="container section">
-      <h2 class="title">Contact</h2>
-      <div class="contact">
-        <a class="btn primary" href="mailto:bkavyashree2004@gmail.com">Email</a>
-        <a class="btn" href="https://github.com/Kavyashree1212" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank" rel="noopener">LinkedIn</a>
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">04 — Background</p>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="section-body">
+          <p class="aside-label">Academic history</p>
+          <div>
+            <div class="edu-item">
+              <p class="edu-period">Aug 2022 – Present<br>Bengaluru</p>
+              <div>
+                <p class="edu-name">Nagarjuna College of Engineering &amp; Technology</p>
+                <p class="edu-detail">B.E. Computer Science Engineering</p>
+                <span class="edu-score">CGPA 8.70</span>
+              </div>
+            </div>
+            <div class="edu-item">
+              <p class="edu-period">2020 – 2022<br>Udupi</p>
+              <div>
+                <p class="edu-name">Varasiddhi Vinayaka PU College</p>
+                <p class="edu-detail">PUC — Physics, Chemistry, Mathematics &amp; Biology</p>
+                <span class="edu-score">79.16%</span>
+              </div>
+            </div>
+            <div class="edu-item">
+              <p class="edu-period">Completed 2020<br>Davanagere</p>
+              <div>
+                <p class="edu-name">Kittur Rani Chennamma Residential School</p>
+                <p class="edu-detail">High School (SSLC)</p>
+                <span class="edu-score">89.6%</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">05 — Credentials</p>
+          <h2 class="section-title">Certifications</h2>
+        </div>
+        <div class="section-body">
+          <p class="aside-label">Verified credentials &amp; completed courses</p>
+          <div>
+            <div class="cert-item">
+              <p class="cert-org">NPTEL</p>
+              <p class="cert-name">Programming in Java — Elite Certificate</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/19a0fVf3szTMUD_tv9zucTM8itphAvlol/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+            <div class="cert-item">
+              <p class="cert-org">ServiceNow</p>
+              <p class="cert-name">Certified System Administrator (CSA)</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/1ZmxQahEpFGfn2bibB98TEKTVgLS_qoiu/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+            <div class="cert-item">
+              <p class="cert-org">ServiceNow</p>
+              <p class="cert-name">Certified Application Developer (CAD)</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/1RZAzA9CuMmn95pSaTsyuEVWLWyi6q_E9/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+            <div class="cert-item">
+              <p class="cert-org">ServiceNow</p>
+              <p class="cert-name">Welcome to ServiceNow — Micro Certification</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/1GKHFaCSGLU_TTN56HclU_Tp1Sp1neFVf/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+            <div class="cert-item">
+              <p class="cert-org">Oracle</p>
+              <p class="cert-name">Oracle Database Foundations</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/1ZDo0xnuAQlurAzNHc6m7rxMtX8c-qlz5/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+            <div class="cert-item">
+              <p class="cert-org">Bootcamp</p>
+              <p class="cert-name">Full Stack Developer — Frontend to Backend</p>
+              <a class="cert-link" href="https://drive.google.com/file/d/15GDm2VUtOD99TPeaAMpbL6vO-dYYWGSm/view?usp=drive_link" target="_blank" rel="noopener">View ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <p class="section-num">06 — Get in touch</p>
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <div class="section-body">
+          <p class="aside-label">Open to roles &amp;<br>collaborations</p>
+          <div class="contact-grid">
+            <div>
+              <p class="contact-message">
+                I'm actively looking for <strong>frontend developer roles and opportunities</strong>.
+                Whether it's a full-time position, internship extension, or a collaboration — my inbox is open.
+              </p>
+              <a class="btn-dark" href="mailto:bkavyashree2004@gmail.com">Send an email</a>
+            </div>
+            <div>
+              <a class="clink" href="mailto:bkavyashree2004@gmail.com">
+                <span class="clink-key">Email</span>
+                <span class="clink-val">bkavyashree2004@gmail.com</span>
+              </a>
+              <a class="clink" href="tel:+918310142092">
+                <span class="clink-key">Phone</span>
+                <span class="clink-val">+91 83101 42092</span>
+              </a>
+              <a class="clink" href="https://github.com/Kavyashree1212" target="_blank" rel="noopener">
+                <span class="clink-key">GitHub</span>
+                <span class="clink-val">github.com/Kavyashree1212</span>
+              </a>
+              <a class="clink" href="https://www.linkedin.com/in/kavyashree-b-0b58ab319/" target="_blank" rel="noopener">
+                <span class="clink-key">LinkedIn</span>
+                <span class="clink-val">/in/kavyashree-b-0b58ab319</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container foot">
-      <p>© <span id="year"></span> Kavyashree B</p>
-      <a href="#home" class="top">↑ Back to top</a>
+  <footer>
+    <div class="site-footer">
+      <p class="foot-copy">© <span id="year"></span> Kavyashree B · Bengaluru, Karnataka</p>
+      <a href="#home" class="foot-top">↑ Top</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    menu.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    // Project filter
+    const chips = document.querySelectorAll('.chip');
+    const rows = document.querySelectorAll('.project-row');
+    chips.forEach(chip => {
+      chip.addEventListener('click', e => {
+        e.stopPropagation();
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const f = chip.dataset.filter;
+        rows.forEach(r => { r.style.display = (f === 'all' || r.dataset.tags.includes(f)) ? '' : 'none'; });
+      });
+    });
+
+    // Project expand
+    function toggleProject(row) {
+      const exp = row.querySelector('.proj-expand');
+      const btn = row.querySelector('.proj-toggle');
+      const open = exp.classList.toggle('open');
+      btn.textContent = open ? '− Details' : '+ Details';
+    }
+  </script>
 </body>
 </html>
-
